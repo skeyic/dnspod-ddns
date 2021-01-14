@@ -1,0 +1,10 @@
+dnspod-ddns:
+  restart: always
+  image: localhost:5000/dnspod-ddns
+  command: /application/dnspod-ddns -logtostderr -v=4
+  environment:
+    LOGIN_TOKEN: 111111,de1aa624c7f624a13647678ccdb34ec6
+    DOMAIN_ID: 85782217
+    RECORD_ID: 736321772
+    RECORD_LINE_ID: 0
+    SUB_DOMAIN: www
