@@ -119,7 +119,12 @@ func (d *DDNSService) Process() {
 				return
 			}
 		}
-		glog.V(4).Infof("processed")
+		err = d.DDNS(myIP)
+		if err != nil {
+			glog.Error("failed to DDNS this round, need to change the ip to %s", myIP)
+			return
+		}
+		glog.V(4).Infof("PROCESS change IP to %s", myIP)
 	}
 
 	var (
