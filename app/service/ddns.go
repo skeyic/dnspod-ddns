@@ -80,6 +80,7 @@ func (d *DDNSService) GetCurrentIP() (string, error) {
 	return dnsRecords[0].Value, nil
 }
 
+// curl 'https://dnsapi.cn/Domain.List' -d 'login_token=<your_login_token>&format=json'
 // curl -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=205809,de1aa624c7f624a13647678ccdb34ec6&
 // format=json&domain_id=85782217&record_id=736321772&record_line_id=0&sub_domain=www&value=1.1.1.1'
 func (d *DDNSService) DDNS(ip string) error {
