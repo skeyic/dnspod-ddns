@@ -72,12 +72,16 @@ func (d *DDNSService) GetCurrentIP() (string, error) {
 		return "", ErrGetCurrentIP
 	}
 
-	if len(dnsRecords) != 1 {
-		glog.Errorf("failed to get records, err: %v", err)
-		return "", ErrGetCurrentIP
+	glog.V(4).Infof("dnsRecords: %+v", dnsRecords)
+
+	for _, r := range dnsRecords {
+		if r.ID == d.recordID {
+			return r.Value, nil
+		}
 	}
 
-	return dnsRecords[0].Value, nil
+	glog.Errorf("failed to get records, err: %v", err)
+	return "", ErrGetCurrentIP
 }
 
 // curl 'https://dnsapi.cn/Domain.List' -d 'login_token=<your_login_token>&format=json'

@@ -28,6 +28,40 @@ func Test_ddnsService_GetCurrentIP(t *testing.T) {
 
 }
 
+func Test_ddnsService_GetCurrentIP2(t *testing.T) {
+	flag.Set("logtostderr", "true")
+	flag.Set("v", "10")
+	flag.Parse()
+
+	svc := &DDNSService{
+		loginToken:   "257552,760c0e7e00695f54bc67f38cc7f63d03",
+		domainID:     "88590971",
+		recordID:     "900956368",
+		recordLineID: "0",
+		subDomain:    "www",
+	}
+
+	glog.V(4).Info(svc.GetCurrentIP())
+
+}
+
+func Test_ddnsService_GetCurrentIP3(t *testing.T) {
+	flag.Set("logtostderr", "true")
+	flag.Set("v", "10")
+	flag.Parse()
+
+	svc := &DDNSService{
+		loginToken:   "257552,760c0e7e00695f54bc67f38cc7f63d03",
+		domainID:     "88590971",
+		recordID:     "900947682",
+		recordLineID: "0",
+		subDomain:    "@",
+	}
+
+	glog.V(4).Info(svc.GetCurrentIP())
+
+}
+
 func Test_ddnsService_DDNS(t *testing.T) {
 	flag.Set("logtostderr", "true")
 	flag.Set("v", "10")
